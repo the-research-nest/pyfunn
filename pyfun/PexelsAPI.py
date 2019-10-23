@@ -34,3 +34,7 @@ class PexelsAPI:
                                  headers=self.headers)).json()
         images = JsonToImageList(response)
         return images
+
+    # Functions for video apis to be implemented.
+
+    # https://www.pexels.com/api/documentation/
