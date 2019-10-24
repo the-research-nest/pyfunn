@@ -45,8 +45,8 @@ class PexelsAPI:
         url = self.path + 'videos/search'
 
         response = (requests.get(url=url, params=params,
-                                 headers=self.headers)).json()
-        videos = JsonToVideoList(response)  # To be implemented
+                                 headers=self.headers))
+        videos=array_to_video(response)#To be implemented
         return videos          
     #Get Popular Videos
     def GetVideosByPopular(self, per_page, page):
@@ -54,13 +54,13 @@ class PexelsAPI:
         url = self.path + 'videos/popular'
 
         response = (requests.get(url=url, params=params,
-                                 headers=self.headers)).json()
-        videos = JsonToVideoList(response)
+                                 headers=self.headers))
+        videos = array_to_video(response)
         return videos
     #Get Videos by their Id
     def GetVideosbyId(self,id):
         params={'id':str(id)}
         url=self.path+'videos/videos/'
-        response=(requests.get(url=url,params=params,headers=self.headers)).json()
-        videos=JsonToVideoList(response)
+        response=(requests.get(url=url,params=params,headers=self.headers))
+        videos=array_to_video(response)
         return videos
