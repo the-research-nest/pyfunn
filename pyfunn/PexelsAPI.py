@@ -35,7 +35,32 @@ class PexelsAPI:
                                  headers=self.headers)).json()
         images = JsonToImageList(response)
         return images
+    
 
-    # Functions for video apis to be implemented.
+    # Functions for video apis
 
-    # https://www.pexels.com/api/documentation/
+    #Getting Videos by Query 
+    def GetVideosByQuery(self, query, per_page, page):
+        params = {'query': query, 'per_page': str(per_page), 'page': str(page)}
+        url = self.path + 'videos/search'
+
+        response = (requests.get(url=url, params=params,
+                                 headers=self.headers))
+        videos=array_to_video(response)#To be implemented
+        return videos          
+    #Get Popular Videos
+    def GetVideosByPopular(self, per_page, page):
+        params = {'per_page': str(per_page), 'page': str(page)}
+        url = self.path + 'videos/popular'
+
+        response = (requests.get(url=url, params=params,
+                                 headers=self.headers))
+        videos = array_to_video(response)
+        return videos
+    #Get Videos by their Id
+    def GetVideosbyId(self,id):
+        params={'id':str(id)}
+        url=self.path+'videos/videos/'
+        response=(requests.get(url=url,params=params,headers=self.headers))
+        videos=array_to_video(response)
+        return videos
